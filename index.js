@@ -71,6 +71,13 @@ app.get('/api/dog', (req, res) => {
   });
 });
 
+app.delete('/api/dog', (req, res) => {
+  dogArray.shift();
+  res.json({
+    dogs: [dogArray[0]]
+  });
+});
+
 function runServer(port = PORT) {
   const server = app
     .listen(port, () => {
