@@ -20,6 +20,15 @@ catArray.push({
   breed: 'Bengal',
   story: 'Thrown on the street'
 });
+catArray.push({
+  imageURL:'https://i.ytimg.com/vi/5Tkt1aXq3kM/maxresdefault.jpg', 
+  imageDescription: 'Name this kitty',
+  name: 'unknown',
+  sex: 'Female',
+  age: 4,
+  breed: 'Tabby',
+  story: 'Angry all teh time'
+});
 const dogArray = [];
 dogArray.push({
   imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
@@ -44,6 +53,13 @@ app.use(
 );
 
 app.get('/api/cat', (req, res) => {
+  res.json({
+    cats: [catArray[0]]
+  });
+});
+
+app.delete('/api/cat', (req, res) => {
+  catArray.shift();
   res.json({
     cats: [catArray[0]]
   });
